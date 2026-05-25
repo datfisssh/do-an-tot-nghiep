@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
-import { ArrowRight, ShoppingCart, Briefcase, Cpu, ShieldAlert, Coins } from 'lucide-react';
+import { useState, ReactNode } from 'react';
+import { ArrowRight, ShoppingCart, Briefcase, Cpu, Coins } from 'lucide-react';
 
 interface UseCaseMode {
   id: string;
   title: string;
   desc: string;
   label: string;
-  icon: React.ReactNode;
+  icon: ReactNode;
 }
 
 interface UseCasesSectionProps {
@@ -54,7 +54,7 @@ export function UseCasesSection({ onKnowMore }: UseCasesSectionProps) {
       <div className="max-w-[88rem] mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
         
         {/* Left Column */}
-        <div className="md:pr-12 md:pt-2 flex flex-col justify-between h-full">
+        <div className="md:pr-12 md:pt-2 flex flex-col justify-between h-full reveal reveal-left reveal-blur">
           <div>
             <span className="text-black/60 text-sm mb-2 block font-medium uppercase tracking-wider font-mono">
               USD Halo in Practice
@@ -75,13 +75,14 @@ export function UseCasesSection({ onKnowMore }: UseCasesSectionProps) {
             <span className="block text-xs font-mono font-semibold uppercase tracking-widest text-[#2B2644]/60 mb-1">
               Select Active Mode to showcase
             </span>
-            {modes.map((mode) => {
+            {modes.map((mode, index) => {
               const isActive = mode.id === activeModeId;
+              const delayClass = index === 0 ? 'delay-75' : index === 1 ? 'delay-150' : index === 2 ? 'delay-200' : 'delay-300';
               return (
                 <button
                   key={mode.id}
                   onClick={() => setActiveModeId(mode.id)}
-                  className={`flex w-full items-center gap-4 px-5 py-4 rounded-xl text-left border transition-all duration-300 ${
+                  className={`flex w-full items-center gap-4 px-5 py-4 rounded-xl text-left border transition-all duration-300 reveal reveal-left ${delayClass} ${
                     isActive
                       ? 'bg-black border-black text-white shadow-md scale-[1.02]'
                       : 'bg-white border-black/5 text-black hover:border-black/20 hover:bg-black/[0.01]'
@@ -108,7 +109,7 @@ export function UseCasesSection({ onKnowMore }: UseCasesSectionProps) {
 
         {/* Right Column (Video background + dynamic overlay card) */}
         <div 
-          className="relative rounded-3xl overflow-hidden min-h-[580px] md:min-h-[720px] w-full flex flex-col justify-end shadow-lg transition-all duration-500 border border-black/5"
+          className="relative rounded-3xl overflow-hidden min-h-[580px] md:min-h-[720px] w-full flex flex-col justify-end shadow-lg transition-all duration-500 border border-black/5 reveal reveal-scale reveal-blur delay-200"
         >
           {/* Use Autoplay Muted Loop background video */}
           <video

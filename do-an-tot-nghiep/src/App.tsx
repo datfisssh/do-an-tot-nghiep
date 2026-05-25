@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Navbar } from './components/Navbar';
 import { HeroSection } from './components/HeroSection';
 import { InfoSection } from './components/InfoSection';
@@ -6,12 +6,16 @@ import { BackedBySection } from './components/BackedBySection';
 import { UseCasesSection } from './components/UseCasesSection';
 import { WalletModal } from './components/WalletModal';
 import { LogoIcon } from './components/LogoIcon';
-import { HelpCircle, Sparkles, Check, Info } from 'lucide-react';
+import { Sparkles, Info } from 'lucide-react';
+import { useScrollReveal } from './hooks/useScrollReveal';
 
 export default function App() {
   const [isWalletOpen, setIsWalletOpen] = useState(false);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
   const [toastType, setToastType] = useState<'info' | 'success'>('info');
+
+  // Trigger the premium scroll reveal IntersectionObserver
+  useScrollReveal();
 
   const triggerToast = (message: string, type: 'info' | 'success' = 'info') => {
     setToastMessage(message);
@@ -89,20 +93,20 @@ export default function App() {
       <WalletModal isOpen={isWalletOpen} onClose={() => setIsWalletOpen(false)} />
 
       {/* Grounded minimalist Fintech footer to wrap up the landing page experience premium feel */}
-      <footer className="bg-[#F5F5F5] border-t border-black/5 py-12 px-6">
+      <footer className="bg-[#F5F5F5] border-t border-black/5 py-12 px-6 reveal reveal-up reveal-blur">
         <div className="max-w-[88rem] mx-auto flex flex-col sm:flex-row justify-between items-center gap-6">
-          <div className="flex items-center gap-2.5 opacity-90">
+          <div className="flex items-center gap-2.5 opacity-90 reveal reveal-up delay-100">
             <LogoIcon className="w-6 h-6 text-black shrink-0" />
             <span className="text-xl font-medium tracking-tight text-black">
               Halo
             </span>
           </div>
 
-          <p className="text-xs text-black/50 font-sans tracking-wide">
+          <p className="text-xs text-black/50 font-sans tracking-wide reveal reveal-up delay-200">
             © {new Date().getFullYear()} USD Halo Stablecoin Protocol. All rights reserved. Built for native digital efficiency.
           </p>
 
-          <div className="flex gap-6 text-xs text-black/60 font-medium">
+          <div className="flex gap-6 text-xs text-black/60 font-medium reveal reveal-up delay-300">
             <span className="cursor-pointer hover:text-black transition-colors" onClick={() => triggerToast('Terms of Service: Mock environment preview license only.', 'info')}>Terms</span>
             <span className="cursor-pointer hover:text-black transition-colors" onClick={() => triggerToast('Privacy Policy: All mock simulated keys are handled locally.', 'info')}>Privacy</span>
             <span className="cursor-pointer hover:text-black transition-colors" onClick={() => triggerToast('USD Halo yields are determined by simulated automated algorithms.', 'info')}>Disclosures</span>

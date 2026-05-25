@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { ArrowRight, Plus, Minus, Landmark } from 'lucide-react';
+import { useState } from 'react';
+import { ArrowRight, Plus, Minus } from 'lucide-react';
 
 interface InfoSectionProps {
   onDiscover: () => void;
@@ -17,7 +17,7 @@ export function InfoSection({ onDiscover }: InfoSectionProps) {
         
         {/* Row 1: Header Introductions */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16 items-start">
-          <div>
+          <div className="reveal reveal-up reveal-blur">
             <h2 
               className="text-black text-4xl md:text-5xl font-medium leading-tight mb-8"
               style={{ letterSpacing: '-0.03em' }}
@@ -26,18 +26,20 @@ export function InfoSection({ onDiscover }: InfoSectionProps) {
             </h2>
             
             {/* Discover It Button */}
-            <button
-              onClick={onDiscover}
-              className="inline-flex items-center gap-3 bg-black text-white text-base font-medium pl-8 pr-2 py-2 rounded-full hover:bg-gray-800 transition-all duration-200 cursor-pointer shadow-sm"
-            >
-              <span>Discover it</span>
-              <span className="bg-white rounded-full p-1.5 flex items-center justify-center">
-                <ArrowRight className="w-4 h-4 text-black" />
-              </span>
-            </button>
+            <div className="reveal reveal-up delay-150">
+              <button
+                onClick={onDiscover}
+                className="inline-flex items-center gap-3 bg-black text-white text-base font-medium pl-8 pr-2 py-2 rounded-full hover:bg-gray-800 transition-all duration-200 cursor-pointer shadow-sm"
+              >
+                <span>Discover it</span>
+                <span className="bg-white rounded-full p-1.5 flex items-center justify-center">
+                  <ArrowRight className="w-4 h-4 text-black" />
+                </span>
+              </button>
+            </div>
           </div>
 
-          <div>
+          <div className="reveal reveal-up reveal-blur delay-200">
             <p className="text-black/70 text-2xl md:text-3xl leading-relaxed tracking-tight">
               USD Halo is a reward-earning dollar coin that lets your savings grow while remaining tied to the U.S. dollar.
             </p>
@@ -49,7 +51,7 @@ export function InfoSection({ onDiscover }: InfoSectionProps) {
           
           {/* Card 1: Savings that bloom (Spans 2 cols on lg) */}
           <div 
-            className="rounded-2xl lg:col-span-2 min-h-80 flex flex-col justify-between p-7 relative overflow-hidden group shadow-sm hover:shadow-lg transition-all duration-300 border border-black/5"
+            className="rounded-2xl lg:col-span-2 min-h-80 flex flex-col justify-between p-7 relative overflow-hidden group shadow-sm hover:shadow-lg transition-all duration-300 border border-black/5 reveal reveal-up reveal-blur delay-100"
             style={{
               backgroundImage: `url('https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260423_164207_f243351d-ed59-48ec-83a0-a5e996bdbe3c.png&w=1280&q=85')`,
               backgroundSize: 'cover',
@@ -115,7 +117,7 @@ export function InfoSection({ onDiscover }: InfoSectionProps) {
           </div>
 
           {/* Card 2: Solid bg info card */}
-          <div className="rounded-2xl p-7 min-h-80 flex flex-col justify-between bg-[#2B2644] hover:scale-[1.01] transition-transform duration-300 shadow-sm">
+          <div className="rounded-2xl p-7 min-h-80 flex flex-col justify-between bg-[#2B2644] hover:scale-[1.01] transition-transform duration-300 shadow-sm reveal reveal-up reveal-blur delay-300">
             <h3 className="text-white text-2xl font-medium leading-snug tracking-tight">
               Always fluid,<br />always pegged.
             </h3>
@@ -125,7 +127,7 @@ export function InfoSection({ onDiscover }: InfoSectionProps) {
           </div>
 
           {/* Card 3: Solid bg automated info card */}
-          <div className="rounded-2xl p-7 min-h-80 flex flex-col justify-between bg-[#2B2644] hover:scale-[1.01] transition-transform duration-300 shadow-sm">
+          <div className="rounded-2xl p-7 min-h-80 flex flex-col justify-between bg-[#2B2644] hover:scale-[1.01] transition-transform duration-300 shadow-sm reveal reveal-up reveal-blur delay-500">
             <h3 className="text-white text-2xl font-medium leading-snug tracking-tight">
               Fully<br />automated.
             </h3>
