@@ -1,5 +1,3 @@
-import React from 'react';
-
 export function BackedBySection() {
   const backers = [
     { name: 'Fundamental Labs', style: { fontFamily: '"Times New Roman", Georgia, serif', fontWeight: 400, letterSpacing: '0.02em', fontSize: '14px' } },
@@ -19,12 +17,12 @@ export function BackedBySection() {
     <section className="bg-[#F5F5F5] px-6 py-12 border-y border-black/[0.06]">
       <div className="max-w-[88rem] mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 items-center">
         {/* Left col (1/4) */}
-        <div className="text-black/70 text-base leading-relaxed select-none">
+        <div className="text-black/70 text-base leading-relaxed select-none reveal reveal-left reveal-blur">
           Funded by premier partners<br />and forward-thinking leaders.
         </div>
 
         {/* Right col (3/4): Infinite Backers Marquee */}
-        <div className="md:col-span-3 overflow-hidden py-3">
+        <div className="md:col-span-3 overflow-hidden py-3 reveal reveal-right reveal-scale delay-200">
           <div className="backers-track flex items-center">
             {marqueeItems.map((backer, idx) => (
               <div
